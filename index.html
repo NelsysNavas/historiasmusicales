@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historias Musicales con Nelsys Navas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-light: #F2D492;
+            --gold-main: #C5A059;
+            --gold-dark: #8E6D2F;
+            --black: #050505;
+            --near-black: #121212;
+        }
+        body {
+            background-color: var(--black);
+            color: #e0e0e0;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .gold-gradient-text {
+            background: linear-gradient(to right, var(--gold-light), var(--gold-main), var(--gold-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .gold-border {
+            border: 1px solid transparent;
+            background: linear-gradient(var(--near-black), var(--near-black)) padding-box,
+                        linear-gradient(135deg, var(--gold-light), var(--gold-dark)) border-box;
+        }
+
+        .hero-banner {
+            background-image: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,1)), url('https://raw.githubusercontent.com/placeholder-images/main/header_banner.jpg'); /* Fallback */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .podcast-container {
+            background: #111;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid var(--gold-dark);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            width: 100%;
+        }
+
+        .divider-gold {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold-main), transparent);
+            width: 100%;
+        }
+
+        /* Estilos del Botón Back to Top */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-dark));
+            color: black;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        #backToTop.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Botón Volver Arriba -->
+    <div id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 15l7-7 7 7" />
+        </svg>
+    </div>
+
+    <!-- Header / Hero Section con Banner Principal -->
+    <header class="relative w-full border-b border-gold-dark/20">
+        <!-- Imagen de Cabecera (Banner) -->
+        <div class="w-full overflow-hidden h-[250px] md:h-[450px] relative">
+            <img src="images/Banner_Historias_Musicales.png" alt="Banner Historias Musicales" class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center -mt-16 md:-mt-24 relative z-10 px-4">
+            <p class="text-[10px] md:text-xs tracking-[0.6em] text-gold-main uppercase mb-4 font-semibold">Podcast Original</p>
+            <h1 class="text-4xl md:text-8xl gold-gradient-text uppercase mb-4 leading-tight">Historias Musicales</h1>
+            <p class="text-sm md:text-xl tracking-[0.3em] font-light italic text-white/80 uppercase mb-8">Con Nelsys Navas</p>
+            
+            <!-- Resumen del Programa (Extraído del PDF) -->
+            <div class="max-w-2xl mx-auto bg-black/60 backdrop-blur-md p-6 md:p-8 gold-border rounded-xl mb-12">
+                <p class="text-gray-200 text-sm md:text-base leading-relaxed italic">
+                    "Un viaje sonoro por la vida y obra de los artistas más influyentes de la música en español. Acompáñanos a descubrir las anécdotas, los secretos y el legado de las grandes leyendas que han marcado el ritmo en Venezuela y toda Latinoamérica."
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-20">
+        
+        <!-- Episodio Destacado: Rafael Orozco -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-24">
+            
+            <!-- Portada del Episodio -->
+            <div class="lg:col-span-5">
+                <div class="gold-border rounded-lg overflow-hidden shadow-2xl relative group">
+                    <img src="images/podcast_001.png" alt="Rafael Orozco - El hombre del smoking" class="w-full object-cover aspect-square transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
+                    <div class="absolute bottom-6 left-6">
+                        <span class="bg-gold-main text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase mb-2 inline-block">Podcast 001</span>
+                        <h3 class="text-3xl font-bold">Rafael Orozco</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Descripción y Reproductor -->
+            <div class="lg:col-span-7 space-y-8">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">El hombre que le puso <span class="text-gold-main">smoking</span> al acordeón</h2>
+                    <p class="text-gray-400 text-base md:text-lg leading-relaxed">
+                        Exploramos la elegancia y el sentimiento eterno del Binomio de Oro. Desde los clásicos del vallenato hasta los secretos de su legado, narramos la historia detrás de las canciones que forman parte de tu vida.
+                    </p>
+                </div>
+
+                <!-- Reproductor iVoox -->
+                <div class="podcast-container">
+                    <iframe src="https://www.ivoox.com/player_es_podcast_3160932_zp_1.html" width="100%" height="400" frameborder="0" allowfullscreen="" scrolling="no" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Próximos Lanzamientos -->
+        <section class="py-12 border-t border-white/5">
+            <div class="flex items-center gap-4 mb-12">
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-widest text-gold-main">Archivo de Leyendas</h3>
+                <div class="flex-grow h-[1px] bg-gradient-to-r from-gold-dark/50 to-transparent"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Javier Solis -->
+                <div class="bg-gradient-to-b from-[#151515] to-black p-8 rounded-2xl border border-white/5 hover:border-gold-main/30 transition-all duration-500">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gold-main/10 flex items-center justify-center text-gold-main">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" /></svg>
+                        </div>
+                        <span class="text-[10px] text-gray-500 font-mono uppercase tracking-widest">36:06 min</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 uppercase">Javier Solís</h4>
+                    <p class="text-gold-main text-sm italic mb-4">"Luz de Luna - Parte II"</p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-6">Remasterización del especial dedicado al Rey del Bolero Ranchero. Un análisis profundo de su técnica y carisma.</p>
+                    <div class="pt-4 border-t border-white/5">
+                        <span class="text-[10px] text-gold-light/50 font-bold uppercase tracking-widest">Estado: Por subir</span>
+                    </div>
+                </div>
+
+                <!-- Binomio de Oro -->
+                <div class="bg-gradient-to-b from-[#151515] to-black p-8 rounded-2xl border border-white/5 hover:border-gold-main/30 transition-all duration-500">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gold-main/10 flex items-center justify-center text-gold-main">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <span class="text-[10px] text-gray-500 font-mono uppercase tracking-widest">39:29 min</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 uppercase">Binomio de Oro</h4>
+                    <p class="text-gold-main text-sm italic mb-4">"No sé pedir perdón"</p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-6">La historia detrás del éxito que consolidó a la agrupación en la cima del vallenato romántico.</p>
+                    <div class="pt-4 border-t border-white/5">
+                        <span class="text-[10px] text-gold-light/50 font-bold uppercase tracking-widest">Estado: En edición</span>
+                    </div>
+                </div>
+
+                <!-- Rafael Vandarrez -->
+                <div class="bg-gradient-to-b from-[#151515] to-black p-8 rounded-2xl border border-white/5 hover:border-gold-main/30 transition-all duration-500">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 rounded-full bg-gold-main/10 flex items-center justify-center text-gold-main">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
+                        </div>
+                        <span class="text-[10px] text-gray-500 font-mono uppercase tracking-widest">08:34 min</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2 uppercase">Rafael Vandarrez</h4>
+                    <p class="text-gold-main text-sm italic mb-4">Entrevista Exclusiva</p>
+                    <p class="text-xs text-gray-400 leading-relaxed mb-6">Anecdotario inédito sobre el desarrollo de artistas en Venezuela y el mundo.</p>
+                    <div class="pt-4 border-t border-white/5">
+                        <span class="text-[10px] text-gold-light/50 font-bold uppercase tracking-widest">Estado: En cola</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer de Gala -->
+    <footer class="bg-black py-20 px-6 relative overflow-hidden">
+        <div class="divider-gold opacity-20 absolute top-0 left-0"></div>
+        <div class="max-w-4xl mx-auto text-center">
+            <img src="images/logo_historias_musicales.png" alt="Logo Historias Musicales" class="h-16 mx-auto mb-8 grayscale hover:grayscale-0 transition-all duration-700">
+            <h2 class="text-2xl md:text-3xl gold-gradient-text uppercase mb-6 tracking-widest font-bold">Historias Musicales</h2>
+            <p class="text-white/40 text-xs md:text-sm uppercase tracking-[0.3em] mb-12">Narrativas que marcan el ritmo de tu vida</p>
+            
+            <div class="flex flex-wrap justify-center gap-10 mb-16">
+                <a href="https://open.spotify.com/user/31yjrnuhz3bhsqt4tweiqvhrp4gy?si=298aeff8c287432c" target="_blank" class="text-white/60 hover:text-gold-main transition-colors text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-transparent hover:border-gold-main pb-2">Spotify</a>
+
+                <a href="https://www.ivoox.com/podcast-historias-musicales_sq_f13160932_1.html" target="_blank" class="text-white/60 hover:text-gold-main transition-colors text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-transparent hover:border-gold-main pb-2">iVoox</a>
+
+                <a href="https://beacons.ai/nelsysnavas" target="_blank" class="text-white/60 hover:text-gold-main transition-colors text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-transparent hover:border-gold-main pb-2">Beacons</a>
+                
+                <a href="https://soundcloud.com/nelsys-milagros-navas" target="_blank" class="text-white/60 hover:text-gold-main transition-colors text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-transparent hover:border-gold-main pb-2">Soundcloud</a>
+            </div>
+            
+            <p class="text-[10px] text-white/20 uppercase tracking-[0.5em]">2024 &copy; Historias Musicales con Nelsys Navas</p>
+        </div>
+    </footer>
+
+    <script>
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.onscroll = function() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        };
+    </script>
+
+</body>
+</html>
