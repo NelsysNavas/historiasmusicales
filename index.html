@@ -15,7 +15,7 @@
 
       gtag('config', 'G-YE383QNTR2');
     </script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
@@ -49,12 +49,6 @@
             border: 1px solid transparent;
             background: linear-gradient(var(--near-black), var(--near-black)) padding-box,
                         linear-gradient(135deg, var(--gold-light), var(--gold-dark)) border-box;
-        }
-
-        .hero-banner {
-            background-image: linear-gradient(to bottom, rgba(5,5,5,0.7), rgba(5,5,5,1)), url('https://raw.githubusercontent.com/placeholder-images/main/header_banner.jpg'); /* Fallback */
-            background-size: cover;
-            background-position: center;
         }
 
         .podcast-container {
@@ -102,6 +96,34 @@
             transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
         }
+
+        /* Slider Styles */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-cover: cover;
+        }
+
+        h2.text-3xl.md\:text-5xl.font-bold.mb-4 {font-family: cinzel; font-weight: 300}
+
     </style>
 </head>
 <body class="antialiased">
@@ -115,9 +137,8 @@
 
     <!-- Header / Hero Section con Banner Principal -->
     <header class="relative w-full border-b border-gold-dark/20">
-        <!-- Imagen de Cabecera (Banner) -->
         <div class="w-full overflow-hidden h-[250px] md:h-[450px] relative">
-            <img src="images/Banner_Historias_Musicales.png" alt="Banner Historias Musicales" class="w-full h-full object-cover opacity-60">
+            <img src="https://raw.githubusercontent.com/NelsysNavas/historiasmusicales/refs/heads/main/images/Banner_Historias_Musicales.png" alt="Banner Historias Musicales" class="w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
         </div>
 
@@ -126,28 +147,46 @@
             <h1 class="text-4xl md:text-8xl gold-gradient-text uppercase mb-4 leading-tight">Historias Musicales</h1>
             <p class="text-sm md:text-xl tracking-[0.3em] font-light italic text-white/80 uppercase mb-8">Con Nelsys Navas</p>
             
-            <!-- Resumen del Programa (Extraído del PDF) -->
             <div class="max-w-2xl mx-auto bg-black/60 backdrop-blur-md p-6 md:p-8 gold-border rounded-xl mb-12">
-                <p class="text-gray-200 text-sm md:text-base leading-relaxed italic">
+                <p class="text-gray-200 text-sm md:text-base leading-relaxed italic mb-8">
                     "Un viaje sonoro por la vida y obra de los artistas más influyentes de la música en español. Acompáñanos a descubrir las anécdotas, los secretos y el legado de las grandes leyendas que han marcado el ritmo en Venezuela y toda Latinoamérica."
                 </p>
+                
+                <!-- Botón de Suscribirse Canal iVoox -->
+                <div class="flex justify-center mt-4">
+                    <a href="https://www.ivoox.com/podcast-historias-musicales_sq_f13160932_1.html" target="_blank" class="inline-flex items-center gap-2 bg-[#ff5a39] hover:bg-[#e64d2e] text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 shadow-xl text-xs uppercase tracking-widest">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-8h2v8zm4 0h-2v-8h2v8zm4 0h-2v-8h2v8z"/></svg>
+                        Suscríbete en iVoox
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-20">
         
-        <!-- Episodio Destacado: Rafael Orozco -->
+        <!-- Episodio Destacado con Slider -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start mb-24">
             
-            <!-- Portada del Episodio -->
+            <!-- Slider de Portadas -->
             <div class="lg:col-span-5">
                 <div class="gold-border rounded-lg overflow-hidden shadow-2xl relative group">
-                    <img src="images/podcast_001.png" alt="Rafael Orozco - El hombre del smoking" class="w-full object-cover aspect-square transition-transform duration-1000 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                    <div class="absolute bottom-6 left-6">
-                        <span class="bg-gold-main text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase mb-2 inline-block">Podcast 001</span>
-                        <h3 class="text-3xl font-bold">Rafael Orozco</h3>
+                    <div class="slider-container" id="coverSlider">
+                        <!-- Las imágenes se cargarán aquí vía JS o puedes ponerlas manualmente -->
+                        <div class="slide active">
+                            <img src="portadas/portada1.png" onerror="this.src='images/podcast_001.png'" alt="Portada Podcast">
+                        </div>
+                        <div class="slide">
+                            <img src="portadas/portada2.png" onerror="this.style.display='none'" alt="Portada Podcast">
+                        </div>
+                        <div class="slide">
+                            <img src="portadas/portada3.png" onerror="this.style.display='none'" alt="Portada Podcast">
+                        </div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 pointer-events-none"></div>
+                    <div class="absolute bottom-6 left-6 pointer-events-none">
+                        <span class="bg-gold-main text-black text-[10px] font-bold px-3 py-1 rounded-full uppercase mb-2 inline-block">Galería de Relatos</span>
+                        <h3 class="text-3xl font-bold">Historias</h3>
                     </div>
                 </div>
             </div>
@@ -155,9 +194,9 @@
             <!-- Descripción y Reproductor -->
             <div class="lg:col-span-7 space-y-8">
                 <div>
-                    <h2 class="text-3xl md:text-5xl font-bold mb-4">El hombre que le puso <span class="text-gold-main">smoking</span> al acordeón</h2>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-4">Narrativas que marcan <span style="color: #AA8746;">el ritmo</span></h2>
                     <p class="text-gray-400 text-base md:text-lg leading-relaxed">
-                        Exploramos la elegancia y el sentimiento eterno del Binomio de Oro. Desde los clásicos del vallenato hasta los secretos de su legado, narramos la historia detrás de las canciones que forman parte de tu vida.
+                        Desde los clásicos del vallenato hasta los íconos del pop y la salsa, narramos la historia detrás de las canciones que forman parte de tu vida. Cada episodio es una inmersión profunda en el alma de los grandes maestros.
                     </p>
                 </div>
 
@@ -171,7 +210,7 @@
         <!-- Próximos Lanzamientos -->
         <section class="py-12 border-t border-white/5">
             <div class="flex items-center gap-4 mb-12">
-                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-widest text-gold-main">Archivo de Leyendas</h3>
+                <h3 class="text-xl md:text-2xl font-bold uppercase tracking-widest" style="color: #AA8746;">Archivo de Leyendas</h3>
                 <div class="flex-grow h-[1px] bg-gradient-to-r from-gold-dark/50 to-transparent"></div>
             </div>
 
@@ -227,31 +266,28 @@
         </section>
     </main>
 
-    <!-- Footer de Gala -->
+    <!-- Footer -->
     <footer class="bg-black py-20 px-6 relative overflow-hidden">
         <div class="divider-gold opacity-20 absolute top-0 left-0"></div>
         <div class="max-w-4xl mx-auto text-center">
-            <img src="images/logo_historias_musicales.png" alt="Logo Historias Musicales" class="h-16 mx-auto mb-8 grayscale hover:grayscale-0 transition-all duration-700">
+            <img src="https://raw.githubusercontent.com/NelsysNavas/historiasmusicales/refs/heads/main/images/logo_historias_musicales.png" alt="Logo Historias Musicales" class="h-16 mx-auto mb-8 grayscale hover:grayscale-0 transition-all duration-700">
             <h2 class="text-2xl md:text-3xl gold-gradient-text uppercase mb-6 tracking-widest font-bold">Historias Musicales</h2>
             <p class="text-white/40 text-xs md:text-sm uppercase tracking-[0.3em] mb-12">Narrativas que marcan el ritmo de tu vida</p>
             
             <div class="flex flex-wrap justify-center gap-10 mb-16">
                 <a href="https://open.spotify.com/user/31yjrnuhz3bhsqt4tweiqvhrp4gy?si=298aeff8c287432c" target="_blank" class="text-white/60 hover:text-gold-main transition-colors text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-transparent hover:border-gold-main pb-2">Spotify</a>
-
                 <a href="https://www.ivoox.com/podcast-historias-musicales_sq_f13160932_1.html" target="_blank" class="text-white/60 hover:text-gold-main transition-colors text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-transparent hover:border-gold-main pb-2">iVoox</a>
-
                 <a href="https://beacons.ai/nelsysnavas" target="_blank" class="text-white/60 hover:text-gold-main transition-colors text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-transparent hover:border-gold-main pb-2">Beacons</a>
-                
                 <a href="https://soundcloud.com/nelsys-milagros-navas" target="_blank" class="text-white/60 hover:text-gold-main transition-colors text-[10px] uppercase tracking-[0.4em] font-semibold border-b border-transparent hover:border-gold-main pb-2">Soundcloud</a>
             </div>
             
-            <p class="text-[10px] text-white/20 uppercase tracking-[0.5em]">2024 &copy; Historias Musicales con Nelsys Navas</p>
+            <p class="text-[10px] text-white/20 uppercase tracking-[0.5em]">2026 &copy; Historias Musicales con Nelsys Navas</p>
         </div>
     </footer>
 
     <script>
+        // Back to Top Button Logic
         const backToTopBtn = document.getElementById('backToTop');
-        
         window.onscroll = function() {
             if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
                 backToTopBtn.classList.add('visible');
@@ -259,6 +295,29 @@
                 backToTopBtn.classList.remove('visible');
             }
         };
+
+        // Slider Logic
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            
+            // Si la imagen no cargó (onerror), saltar a la siguiente
+            const currentImg = slides[currentSlide].querySelector('img');
+            if (currentImg.style.display === 'none') {
+                nextSlide();
+                return;
+            }
+            
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Cambiar cada 4 segundos
+        if (slides.length > 1) {
+            setInterval(nextSlide, 4000);
+        }
     </script>
 
 </body>
